@@ -5,6 +5,10 @@
 }
 
 .container {
-  width: 1150px;
+  width: var(--default-layout-width);
   display: flex;
+}
+
+.content {
+  flex: 1;
 }
