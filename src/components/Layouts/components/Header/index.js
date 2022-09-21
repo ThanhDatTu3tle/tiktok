@@ -8,6 +8,7 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 
 
@@ -60,8 +61,14 @@ function Header() {
           </div>
         </Tippy>
         <div className={cx('actions')}>
-          <h3>Upload</h3>
-          <h3>Login</h3>
+          <button className={cx('upload-btn')}>
+            <img src={images.icon_upload} alt='upload'/>
+            Upload
+          </button>
+          <Button primary>Log in</Button>
+          <button className={cx('moreinfo-btn')}>
+            <img src={images.icon_moreinfo} alt='moreInfo'/>
+          </button>
         </div>
       </div>
     </header>

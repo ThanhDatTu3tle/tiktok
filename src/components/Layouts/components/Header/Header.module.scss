@@ -12,6 +12,8 @@
   height: 100%;
   width: var(--default-layout-width);
   justify-content: space-between;
+  padding-right: 24px;
+  padding-left: 20px;
 
   .search,
   .search-result {
@@ -123,5 +125,33 @@
   .actions {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
+    .upload-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-style: normal;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      min-width: 110px;
+      padding: 0 16px;
+      height: 36px;
+      border: 1px solid rgba(22, 24, 35, 0.12);
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 1);
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+      }
+    }
+
+    .moreinfo-btn {
+      margin-left: 16px;
+      background: rgba(255, 255, 255, 1);
+      cursor: pointer;
+    }
   }
 }
