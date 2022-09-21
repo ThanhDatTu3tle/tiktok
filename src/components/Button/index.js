@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Button.module.scss';
 import { Link } from 'react-router-dom';
+import { type } from '@testing-library/user-event/dist/type';
 
 const cx = classNames.bind(styles)
 
@@ -11,6 +12,7 @@ function Button({
   outline = false, 
   small = false, 
   large = false, 
+  disable = false,
   children, 
   onClick, 
   ...passProps }) 
@@ -22,6 +24,16 @@ function Button({
     ...passProps,
   }
 
+  // remove even listener when button is disabled
+  if (disable) {
+    Object.keys(props).forEach(key => {
+      if (key.startsWith('on') && typeof props[key] === 'function') {
+        delete props[key]
+      }
+    })
+  }
+
+  // 
   if (to) {
     props.to = to
     Comp = Link
@@ -35,6 +47,7 @@ function Button({
     outline,
     small,
     large,
+    disable
   })
 
   return (

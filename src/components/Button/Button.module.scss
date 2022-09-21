@@ -10,9 +10,15 @@
   background-color: white;
   line-height: 22px;
   margin-left: 16px;
+  user-select: none;
 
   + .wrapper {
     margin-left: 16px;
+  }
+
+  &.disable {
+    pointer-events: none;
+    opacity: 0.5;
   }
 }
 
