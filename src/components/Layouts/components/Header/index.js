@@ -9,10 +9,24 @@ import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
-
-
+import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles)
+const MENU_MOREINFO_ITEMS = [
+  {
+    icon: <img src={images.icon_language} alt='language'/>,
+    title: 'English',
+  },
+  {
+    icon: <img src={images.icon_feedback} alt='feedback'/>,
+    title: 'Feedback and help',
+    to: '/feedback',
+  },
+  {
+    icon: <img src={images.icon_keyboard} alt='keyboard'/>,
+    title: 'Keyboard shortcuts',
+  },
+]
 
 function Header() {
 
@@ -66,9 +80,13 @@ function Header() {
             Upload
           </button>
           <Button primary>Log in</Button>
-          <button className={cx('moreinfo-btn')}>
-            <img src={images.icon_moreinfo} alt='moreInfo'/>
-          </button>
+          <Menu
+            items={MENU_MOREINFO_ITEMS}
+          >
+            <button className={cx('moreinfo-btn')}>
+              <img src={images.icon_moreinfo} alt='moreInfo'/>
+            </button>
+          </Menu>
         </div>
       </div>
     </header>

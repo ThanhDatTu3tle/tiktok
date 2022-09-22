@@ -4,6 +4,9 @@ const images = {
     icon_search: require('~/assets/images/icon_search.svg').default,
     icon_upload: require('~/assets/images/icon_upload.svg').default,
     icon_moreinfo: require('~/assets/images/icon_moreinfo.svg').default,
+    icon_language: require('~/assets/images/icon_language.svg').default,
+    icon_feedback: require('~/assets/images/icon_feedback.svg').default,
+    icon_keyboard: require('~/assets/images/icon_keyboard.svg').default,
 }
 
 export default images;
