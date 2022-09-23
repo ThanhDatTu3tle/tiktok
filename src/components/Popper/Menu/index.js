@@ -4,28 +4,43 @@ import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
 import MoreInfoMenu from './MoreInfoMenu';
 import Header from './Header';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles)
 
-function Menu({ children, items = [] }) {
+const defaultFn = () => {}
+
+function Menu({ children, items = [], onChange = defaultFn }) {
+
+  const [history, setHistory] = useState([{ data: items }]) 
+  const current = history[history.length - 1] // get last item
 
   const renderInfo = () => {
-    return items.map((item, index) => (
-      <MoreInfoMenu key={index} data={item}  />
-    ))
+    return current.data.map((item, index) => {
+      const isParent = !!item.children
+
+      return <MoreInfoMenu key={index} data={item} onClick={() => {
+        if(isParent) {
+          setHistory((prev) => [...prev, item.children])
+        } else {
+          onChange(item)
+        }
+      }} />
+    })
   }
 
   return (
     <div>
       <Tippy 
         interactive
-        visible
         delay={[0, 700]}
         placement={'bottom-end'}
         render={(attrs) => (
             <div className={cx('moreinfo-result')} tabIndex="-1" {...attrs}>
               <PopperWrapper className={cx('wrapper-moreinfo')}>
-                <Header title={'Language'}/>
+                {history.length > 1 && <Header title={'Language'} onBack={() => {
+                  setHistory(prev => prev.slice(0, prev.length - 1))
+                }} />}
                 {renderInfo()}
               </PopperWrapper>
             </div>

@@ -16,6 +16,21 @@ const MENU_MOREINFO_ITEMS = [
   {
     icon: <img src={images.icon_language} alt='language'/>,
     title: 'English',
+    children: {
+      title: 'Language',
+      data: [
+        {
+          type: 'Language',
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          type: 'Language',
+          code: 'en',
+          title: 'English',
+        },
+      ]
+    }
   },
   {
     icon: <img src={images.icon_feedback} alt='feedback'/>,
@@ -37,6 +52,15 @@ function Header() {
       setSearchResult([])
     }, 0)
   }, [])
+
+  const handleMenuChange = (moreInfoMenu) => {
+    switch (moreInfoMenu.type) {
+      case 'Language':
+        console.log(moreInfoMenu)
+        break;
+      default:
+    }
+  }
 
   return (
     <header className={cx('wrapper')}>
@@ -82,6 +106,7 @@ function Header() {
           <Button primary>Log in</Button>
           <Menu
             items={MENU_MOREINFO_ITEMS}
+            onChange={handleMenuChange}
           >
             <button className={cx('moreinfo-btn')}>
               <img src={images.icon_moreinfo} alt='moreInfo'/>
