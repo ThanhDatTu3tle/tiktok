@@ -12,6 +12,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import { InboxIcon, MessagesIcon, UploadIcon } from '~/components/Icons';
 // import { faUser } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles)
@@ -136,19 +137,19 @@ function Header() {
           {currentUser ? (
             <>
               <button className={cx('upload-btn')}>
-                <img src={images.icon_upload} alt='upload'/>
+                <UploadIcon />
                 Upload
               </button>
 
               <Tippy content="Messages">
                 <button className={cx('messages-btn')}>
-                  <img src={images.icon_messages} alt='messages'/>
+                    <MessagesIcon />
                 </button>
               </Tippy>
               
               <Tippy content="Inbox">
                 <button className={cx('inbox-btn')}>
-                  <img src={images.icon_inbox} alt='inbox'/>
+                  <InboxIcon />
                 </button>
               </Tippy>
             </>
