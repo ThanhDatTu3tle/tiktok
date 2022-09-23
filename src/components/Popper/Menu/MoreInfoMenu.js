@@ -7,7 +7,7 @@ const cx = classNames.bind(styles)
 
 function MoreInfoMenu({ data, onClick }) {
   return (
-    <Button className={cx('info-item')} onClick={onClick}>
+    <Button className={cx('info-item', { separate: data.separate, })} onClick={onClick}>
       <div className={cx('info-wrapper')}>
         <span className={cx('info-icon')}>{data.icon}</span>
         <span>{data.title}</span>

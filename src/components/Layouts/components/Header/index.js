@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
@@ -10,6 +12,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+// import { faUser } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles)
 const MENU_MOREINFO_ITEMS = [
@@ -47,9 +50,11 @@ function Header() {
 
   const [searchResult, setSearchResult] = useState([])
 
+  const currentUser = true
+
   useEffect(() => {
     setTimeout(() => {
-      setSearchResult([])
+      setSearchResult([1])
     }, 0)
   }, [])
 
@@ -62,14 +67,41 @@ function Header() {
     }
   }
 
+  const userMenu = [
+    {
+      icon: <img src={images.icon_profile} alt='profile'/>,
+      title: 'View profile',
+      // to: '/feedback',
+    },
+    {
+      icon: <img src={images.icon_getcoins} alt='getcoins'/>,
+      title: 'Get coins',
+      // to: '/feedback',
+    },
+    {
+      icon: <img src={images.icon_settings} alt='settings'/>,
+      title: 'Settings',
+      to: '/setting',
+    },
+    ...MENU_MOREINFO_ITEMS,
+    {
+      icon: <img src={images.icon_logout} alt='logout'/>,
+      title: 'Logout',
+      to: '/feedback',
+      separate: true,
+    },
+  ]
+
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
+        {/* Logo */}
         <div className={cx('logo')}>
           <img src={images.logo} alt='Tiktok'/>
         </div>
 
-        <Tippy 
+        {/* Search */}
+        <HeadlessTippy 
           interactive
           visible={searchResult.length > 0}
           render={(attrs) => (
@@ -97,22 +129,57 @@ function Header() {
                 <img className={cx('search-icon')} src={images.icon_search} alt='search'/>
               </button>
           </div>
-        </Tippy>
+        </HeadlessTippy>
+
+        {/* More info */}
         <div className={cx('actions')}>
-          <button className={cx('upload-btn')}>
-            <img src={images.icon_upload} alt='upload'/>
-            Upload
-          </button>
-          <Button primary>Log in</Button>
+          {currentUser ? (
+            <>
+              <button className={cx('upload-btn')}>
+                <img src={images.icon_upload} alt='upload'/>
+                Upload
+              </button>
+
+              <Tippy content="Messages">
+                <button className={cx('messages-btn')}>
+                  <img src={images.icon_messages} alt='messages'/>
+                </button>
+              </Tippy>
+              
+              <Tippy content="Inbox">
+                <button className={cx('inbox-btn')}>
+                  <img src={images.icon_inbox} alt='inbox'/>
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <button className={cx('upload-btn')}>
+                <img src={images.icon_upload} alt='upload'/>
+                Upload
+              </button>
+
+              <Button primary>Log in</Button>
+            </>
+          )}
+
           <Menu
-            items={MENU_MOREINFO_ITEMS}
+            items={currentUser ? userMenu : MENU_MOREINFO_ITEMS}
             onChange={handleMenuChange}
           >
-            <button className={cx('moreinfo-btn')}>
-              <img src={images.icon_moreinfo} alt='moreInfo'/>
-            </button>
+            {currentUser ? (
+              <button className={cx('user-btn')} alt='bodangthuong'>
+                {/* <FontAwesomeIcon className={cx('user-icon')}  icon={faUser} /> */}
+                <img className={cx('user-icon')} src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/324d3658d9f249c6de17426d23cc5206~c5_100x100.jpeg?x-expires=1664100000&x-signature=fJVGoTg27rXWNVXTUV%2Bkwv7A6TY%3D" alt='bodangthuong-avatar'/>
+              </button>
+            ) : (
+              <button className={cx('moreinfo-btn')}>
+                <img src={images.icon_moreinfo} alt='moreInfo'/>
+              </button>
+            )}
           </Menu>
         </div>
+        
       </div>
     </header>
   )
