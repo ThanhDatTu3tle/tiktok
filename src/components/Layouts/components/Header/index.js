@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 
 import images from '~/assets/images';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
-import { InboxIcon, MessagesIcon, UploadIcon } from '~/components/Icons';
-// import { faUser } from '@fortawesome/free-regular-svg-icons';
+import Image from '~/components/Image';
+import { InboxIcon, KeyboardIcon, LanguageIcon, MessagesIcon, UploadIcon, FeedbackIcon } from '~/components/Icons';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 
 const cx = classNames.bind(styles)
 const MENU_MOREINFO_ITEMS = [
   {
-    icon: <img src={images.icon_language} alt='language'/>,
+    icon: <LanguageIcon />,
     title: 'English',
     children: {
       title: 'Language',
@@ -37,12 +37,12 @@ const MENU_MOREINFO_ITEMS = [
     }
   },
   {
-    icon: <img src={images.icon_feedback} alt='feedback'/>,
+    icon: <FeedbackIcon />,
     title: 'Feedback and help',
     to: '/feedback',
   },
   {
-    icon: <img src={images.icon_keyboard} alt='keyboard'/>,
+    icon: <KeyboardIcon />,
     title: 'Keyboard shortcuts',
   },
 ]
@@ -112,8 +112,6 @@ function Header() {
                     Accounts
                   </h4>
                   <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
                 </PopperWrapper>
               </div>
           )}
@@ -170,8 +168,12 @@ function Header() {
           >
             {currentUser ? (
               <button className={cx('user-btn')} alt='bodangthuong'>
-                {/* <FontAwesomeIcon className={cx('user-icon')}  icon={faUser} /> */}
-                <img className={cx('user-icon')} src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/324d3658d9f249c6de17426d23cc5206~c5_100x100.jpeg?x-expires=1664100000&x-signature=fJVGoTg27rXWNVXTUV%2Bkwv7A6TY%3D" alt='bodangthuong-avatar'/>
+                <Image 
+                  className={cx('user-icon')} 
+                  src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/324d3658d9f249c6de17426d23cc5206~c5_100x100.jpeg?x-expires=1664100000&x-signature=fJVGoTg27rXWNVXTUV%2Bkwv7A6TY%3D" 
+                  alt='' 
+                  fallback='https://fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg'
+                />
               </button>
             ) : (
               <button className={cx('moreinfo-btn')}>
