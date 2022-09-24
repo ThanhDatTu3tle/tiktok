@@ -1,7 +1,6 @@
 const images = {
     logo: require('~/assets/images/logo.svg').default,
     icon_clear: require('~/assets/images/icon_clear.svg').default,
-    icon_search: require('~/assets/images/icon_search.svg').default,
     icon_moreinfo: require('~/assets/images/icon_moreinfo.svg').default,
     icon_back: require('~/assets/images/icon_back.svg').default,
     icon_profile: require('~/assets/images/icon_profile.svg').default,
