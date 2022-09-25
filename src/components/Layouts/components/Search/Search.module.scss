@@ -1,106 +1,115 @@
 .search,
-  .search-result {
-    width: 361px;
+.search-result {
+  width: 361px;
 
-    .search-title {
-      font-size: 1.4rem;
-      font-weight: 500;
-      padding: 5px 12px;
-      color: rgba(22, 24, 35, 0.5);
-    }
+  .search-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 5px 12px;
+    color: rgba(22, 24, 35, 0.5);
+  }
+}
+
+.search {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 361px;
+  height: 46px;
+  background-color: rgba(22, 24, 35, 0.06);
+  border-radius: 92px;
+  padding: 0px 0px 0px 16px;
+  border: 1.5px solid transparent;
+
+  .input {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: #828282;
+    font-size: 1.6rem;
+    outline: none;
+    caret-color: rgb(254, 44, 85);
+    flex: 1;
   }
 
-  .search {
-    position: relative;
+  .input:not(:placeholder-shown) ~ .search-btn {
+    color: rgba(22, 24, 35, 0.75);
+  }
+
+  .clear-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 361px;
-    height: 46px;
-    background-color: rgba(22, 24, 35, 0.06);
-    border-radius: 92px;
-    padding: 0px 0px 0px 16px;
-    border: 1.5px solid transparent;
+    width: 26px;
+    height: 16px;
+    border: none;
 
-    .input {
+    .clear-icon {
       width: 100%;
       height: 100%;
-      background-color: rgba(255, 255, 255, 0);
-      border: none;
-      color: #828282;
-      font-size: 1.6rem;
-      outline: none;
-      caret-color: rgb(254, 44, 85);
-      flex: 1;
-    }
-
-    .input:not(:placeholder-shown) ~ .search-btn {
-      color: rgba(22, 24, 35, 0.75);
-    }
-
-    .clear-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 26px;
-      height: 16px;
-      border: none;
-
-      .clear-icon {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    .loading {
-      position: relative;
-      transform: translateX(-130%);
-    }
-
-    .span-divine {
-      width: 1px;
-      height: 28px;
-      margin: -3px 0;
-      background: rgba(22, 24, 35, 0.12);
-    }
-
-    .search-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 52px;
-      height: 100%;
-      outline: none;
-      border: none;
-      border-radius: 0px 92px 92px 0px;
-
-      &:hover {
-        cursor: pointer;
-        background-color: rgba(22, 24, 35, 0.03);
-      }
-
-      &:active {
-        background-color: rgba(22, 24, 35, 0.06);
-      }
-
-      .search-icon {
-        width: 24px;
-        height: 24px;
-        color: rgba(22, 24, 35, 0.34);
-      }
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      right: 52px;
-      width: 1px;
-      height: 28px;
-      margin: -3px 0;
-      background: rgba(22, 24, 35, 0.12);
-    }
-
-    &:focus-within {
-      border: 1.5px solid rgba(22, 24, 35, 0.2);
     }
   }
+
+  .loading {
+    position: relative;
+    animation: spinner 1s linear infinite;
+  }
+
+  @keyframes spinner {
+    from {
+      transform: translateX(-50%) rotate(0);
+    }
+    to {
+      transform: translateX(-50%) rotate(360deg);
+    }
+  }
+
+  .span-divine {
+    width: 1px;
+    height: 28px;
+    margin: -3px 0;
+    background: rgba(22, 24, 35, 0.12);
+  }
+
+  .search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
+    height: 100%;
+    outline: none;
+    border: none;
+    border-radius: 0px 92px 92px 0px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(22, 24, 35, 0.03);
+    }
+
+    &:active {
+      background-color: rgba(22, 24, 35, 0.06);
+    }
+
+    .search-icon {
+      width: 24px;
+      height: 24px;
+      color: rgba(22, 24, 35, 0.34);
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 52px;
+    width: 1px;
+    height: 28px;
+    margin: -3px 0;
+    background: rgba(22, 24, 35, 0.12);
+  }
+
+  &:focus-within {
+    border: 1.5px solid rgba(22, 24, 35, 0.2);
+  }
+}
