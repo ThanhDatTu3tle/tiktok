@@ -2,7 +2,9 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
+import { Link } from 'react-router-dom';
 
+import routesConfig from '~/config/routes';
 import images from '~/assets/images';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
@@ -91,7 +93,9 @@ function Header() {
       <div className={cx('inner')}>
         {/* Logo */}
         <div className={cx('logo')}>
-          <img src={images.logo} alt='Tiktok'/>
+          <Link to={routesConfig.home}>
+            <img src={images.logo} alt='Tiktok'/>
+          </Link>
         </div>
 
         {/* Search */}
