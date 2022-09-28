@@ -6,7 +6,7 @@ import 'tippy.js/dist/tippy.css';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 
-import * as searchService from '~/apiServices/searchService';
+import * as searchService from '~/services/searchService';
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import { useDebounce } from '~/hooks';
