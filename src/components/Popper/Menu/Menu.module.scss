@@ -7,6 +7,10 @@
   flex-direction: column;
 }
 
+.menu-body {
+  overflow-y: auto;
+}
+
 .info-item {
   padding: 6px;
   font-size: 1.6rem;
@@ -45,6 +49,7 @@
   position: relative;
   height: 50px;
   margin-top: -8px;
+  flex-shrink: 0;
 }
 
 .back-btn {
