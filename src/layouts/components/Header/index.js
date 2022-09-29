@@ -125,7 +125,7 @@ function Header() {
           ) : (
             <>
               <button className={cx('upload-btn')}>
-                <img src={images.icon_upload} alt='upload'/>
+                <UploadIcon />  
                 Upload
               </button>
 
