@@ -5,7 +5,6 @@ import styles from './Menu.module.scss';
 
 const cx = classNames.bind(styles)
 
-
 function MoreInfoMenu({ data, onClick }) {
   return (
     <Button className={cx('info-item', { separate: data.separate, })} onClick={onClick}>
