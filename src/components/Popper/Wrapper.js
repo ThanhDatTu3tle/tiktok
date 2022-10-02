@@ -13,7 +13,7 @@ function Wrapper({ children }) {
 }
 
 Wrapper.propTypes = {
-  chidlren: PropTypes.node,
+  children: PropTypes.node,
 }
 
 export default Wrapper;
